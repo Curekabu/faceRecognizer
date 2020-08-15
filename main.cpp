@@ -53,7 +53,7 @@ int main()
 	else
 		printf("ASFInitEngine sucess: %d\n", res);
 
-
+	printf("开始运行。\n按下Q键退出，按下S键登记人脸（登记时请确保画面中只有一张人脸）。\n ");
 	while (1)
 	{
 		Mat image;
@@ -110,6 +110,8 @@ int main()
 				}
 				else
 					printf("登记成功,进入识别阶段。\n");
+
+				printf("绿色方框代表识别到了刚才登记的人脸。红色方框代表人脸不匹配。\n");
 
 				//拷贝feature1至copyfearure1
 				ASF_FaceFeature copyfeature1 = { 0 };
@@ -184,7 +186,11 @@ int main()
 					int key = waitKey(1);
 				 
 					if (key == 'q')
+					{
+						printf("退出识别阶段。按下S键重新登记人脸,按下Q键退出。\n");
 						break;
+					}
+						
 					
 				}
 				SafeFree(copyfeature1.feature);		//释放内存
